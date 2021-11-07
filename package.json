@@ -1,0 +1,23 @@
+{
+  "aoi": "moment",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "discord.js": "^13.4.0-dev.1636157105.49e3ce2",
+    "express": "^4.17.1",
+    "express-ws": "^5.0.2",
+    "owoify-js": "^1.0.7",
+    "vm2": "^3.9.5"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "eslint": "^8.1.0",
+    "heapdump": "^0.3.15",
+    "nodemon": "^2.0.14",
+    "ts-node": "^10.4.0"
+  },
+  "scripts": {
+    "run": "nodemon --watch \"src/**\" --ext \"ts,json\" --ignore \"src/**/*.spec.ts\" --exec \"ts-node index.ts\""
+  }
+}

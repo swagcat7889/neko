@@ -1,0 +1,15 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+      "noImplicitAny": false,
+      "noEmitOnError": true,
+      "removeComments": false,
+      "target": "esnext",
+      "module": "commonjs"
+    },
+    "exclude": [
+      "node_modules",
+      "wwwroot"
+    ]
+  }
+  
