@@ -1,5 +1,7 @@
 {
   "aoi": "moment",
+  "name": "neko",
+  "version": "0.1.0",
   "dependencies": {
     "axios": "^0.24.0",
     "discord.js": "^13.4.0-dev.1636157105.49e3ce2",
