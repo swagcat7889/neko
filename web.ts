@@ -1,30 +1,92 @@
-/* eslint-disable */;
-const express = require('express');
+/* eslint-disable */
+const express = require(`express`);
 const app = express();
-const port = 3030;
-const expressWs = require('express-ws')(app);
-let arr = Array(1e7).fill("some string");
-app.get('/', (req, res) => {;
-  res.send('SwagCat API v0\n<br>Made by pass the rubbito down\n<br>used by the ts bot');
+const port = 6969
+const fs = require(`fs`);
+const axios = require('axios').default;
+let neko = new Array();
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function get() {
+  return await axios.get('https://nekos.life/api/v2/img/neko');
+}
+get().then(function(reply) {
+  if (!neko.includes(reply)) neko.push(reply.data.url);
 });
-
-app.listen(port, () => {;
-  console.log(`online na ${port}`);
+app.get('/', async function (req, res) {
+  process.stdout.write('/ fetch!\n');
+  res.send(`${req.ip}`);
 });
-
-app.ws('/ws', function(ws, req) {
-    ws.on('message', function(msg) {
-      if (msg === 'bye') {
-          ws.send('bye');
-          ws.close();
-      } else if (msg === 'status') {
-          arr.reverse();
-          ws.send(`{
-              "memoryUsage": "${Math.floor(process.memoryUsage().heapUsed / 1024 / 1024)}"
-          }`)
-      }
+app.get('/neko', async function (req, res) {
+  process.stdout.write(`/neko fetch! ip: ${req.ip}\n`);
+  get().then(function(reply) {
+    if (!neko.includes(reply)) neko.push(reply.data.url);
   });
-  ws.on('connection', function(connect) {
-      connect.send('kot');
-  });
+  res.send(neko[Math.floor(Math.random() * neko.length)]);
 });
+app.get(`/ping`, async function (req, res) {
+  process.stdout.write(`/ping fetch! ip: ${req.ip}\n`);
+  res.send(`Pong!`);
+});
+app.get('*', async function (req, res) {
+  process.stdout.write(`404 fetch ip: ${req.ip}\n`);
+  res.send('404 pheasant not found');
+});
+app.listen(port, () => console.log(`SwagCat api ready at http://0.0.0.0:${port}`));
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');
+axios.get('http://localhost:6969/neko');

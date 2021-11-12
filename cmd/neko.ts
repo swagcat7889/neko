@@ -4,18 +4,17 @@
 module.exports = {
     "name": "neko",
     "description": "neko",
-    execute(message, args, axios, Discord) {
+    async execute(message, args, axios, Discord) {
+      if (message.client.user.id == '868202816374722581') return;
+      if (!message.channel.nsfw) return message.reply('???\n*Go to an NSFW channel!*');
         axios.get('https://nekos.life/api/v2/img/neko')
   .then(function (response) {
-    // handle success
     const exampleEmbed = new Discord.MessageEmbed()
-	// .setColor('#0099ff')
     .setFooter('Powered by nekos.life')
     .setImage(response.data.url);
     message.reply({ embeds: [exampleEmbed], allowedMentions: { repliedUser: false }});
   })
   .catch(function (error) {
-    // handle error
     message.reply(`fucky wucky: ${error}`);
   });
     }

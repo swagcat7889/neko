@@ -23,7 +23,7 @@ module.exports = {
 	// .setTitle('pass the rubbito eval')
 	// .setURL('https://youtu.be/E0I6HsdEpNI')
 	// .setAuthor('made by pass the burrito down#4261', 'https://cdn.discordapp.com/avatars/526711537373806592/de4e8f6799015dedacd0bf6608cc5873.webp?size=128', 'https://canary.discord.com/channels/818374882873442314/818382525310173185/905889183812452382')
-	.setDescription(`${out}`)
+	.setDescription(`\`\`\`js\n${out}\n\`\`\``)
     .setFooter(discord.rnd());
 	// .setThumbnail('https://cdn.discordapp.com/avatars/526711537373806592/de4e8f6799015dedacd0bf6608cc5873.webp?size=128')
 	// // .addFields(

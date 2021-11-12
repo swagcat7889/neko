@@ -4,19 +4,22 @@
 import { DiscordAPIError } from "discord.js";
 
 // process.kill(process.pid, 'SIGUSR1');
-require('dotenv').config()
+require('dotenv').config();
+const Keyv = require('keyv');
 const {Client, Intents, Collection} = require("discord.js");
 const discord = require('discord.js');
 const {token} = require("./package.json");
 const fs = require("fs");
 const prefix = process.env.prefix
 discord.prefix = prefix;
+discord.keyv = new Keyv();
 const axios = require('axios').default;
 const owoify = require('owoify-js').default
 discord.owoify = require('owoify-js').default;
 //     cat = new Intents();
 // cat.add(32767);
 discord.rnd = function() {
+    if (client.user.id === '868202816374722581') return 'Stif'
     switch (Math.floor(Math.random() * 6)) {
         case 0:
             return 'OwO'
@@ -34,7 +37,8 @@ discord.rnd = function() {
             return 'OvO?'
     }
 }
-const client = new Client({"intents": [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES], shardCount: 2});
+console.log(Intents.FLAGS)
+const client = new Client({"intents": [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES], partials: ['MESSAGES']});
 client.commands = new Collection();
 const catlol = "cat";
 client.on("ready", async () => {
@@ -67,9 +71,14 @@ for (const file of commandFiles) {
 
 }
 client.on("messageCreate", async (message) => {
+    if (message.partial) return;
         if (!message.content.startsWith(process.env.prefix) || message.author.bot) {
             return;
         }
+        if (discord.keyv.get(`${message.author.id}_gcldwn`) > Date.now()) {
+            return;
+        }
+        discord.keyv.set(`${message.author.id}_gcldwn`, Date.now()+1750, 7500);
         const args = message.content.slice(process.env.prefix.length).trim().split(/ +/),
 	  command = args.shift().toLowerCase();
         if (!client.commands.has(command)) {
@@ -91,10 +100,10 @@ client.login(process.env.token);
 process.on('unhandledRejection', async (a) => {
     client.emit('dbg', 'Unhandled Rejection:'+ a);
 });
-client.on('messageDelete', async (message) => {
-    if (message.author.bot) return;
-    if (message.channel.nsfw) return;
-	if (message.guild.id !== '904763090372001822') return;
-	const stablecontent = message.content
-	message.channel.send(`Wiadomość wysłana przez ${message.author.username}#${message.author.discriminator} (została usunięta też, ale nie wiem przez kogo):\n${stablecontent}`);
-});
+// client.on('messageDelete', async (message) => {
+//     if (message.author.bot) return;
+//     if (message.channel.nsfw) return;
+// 	if (message.guild.id !== '904763090372001822') return;
+// 	const stablecontent = message.content
+// 	message.channel.send(`Wiadomość wysłana przez ${message.author.username}#${message.author.discriminator} (została usunięta też, ale nie wiem przez kogo):\n${stablecontent}`);
+// });

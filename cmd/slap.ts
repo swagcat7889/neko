@@ -4,7 +4,7 @@
 module.exports = {
     "name": "slap",
     "description": "Hey! That hurts!",
-    execute(message, args, axios, Discord) {
+    async execute(message, args, axios, Discord) {
         axios.get('https://nekos.life/api/v2/img/slap')
   .then(function (response) {
     // handle success
