@@ -1,7 +1,7 @@
 {
   "aoi": "moment",
   "name": "neko",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "dependencies": {
     "axios": "^0.24.0",
     "discord.js": "^13.4.0-dev.1636157105.49e3ce2",
@@ -23,6 +23,12 @@
     "ts-node": "^10.4.0"
   },
   "scripts": {
-    "run": "nodemon --watch \"src/**\" --ext \"ts,json\" --ignore \"src/**/*.spec.ts\" --exec \"ts-node index.ts\""
+    "production": "docker run neko -d",
+    "productionstop": "docker stop neko",
+    "productionattached": "docker run neko",
+    "productionstopattached": "docker stop neko",
+    "developement": "nodemon --watch \"src/**\" --ext \"ts,json\" --ignore \"src/**/*.spec.ts\" --exec \"ts-node index.ts\"",
+    "devbuild": "tsc",
+    "build": "docker build -t neko ."
   }
 }

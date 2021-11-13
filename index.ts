@@ -1,8 +1,5 @@
 /* eslint-disable */
 // require('heapdump');
-
-import { DiscordAPIError } from "discord.js";
-
 // process.kill(process.pid, 'SIGUSR1');
 require('dotenv').config();
 const Keyv = require('keyv');
@@ -37,7 +34,22 @@ discord.rnd = function() {
             return 'OvO?'
     }
 }
-console.log(Intents.FLAGS)
+console.log(Intents.FLAGS);
+discord.exec = function(exec1) {
+    const { exec } = require("child_process");
+    exec(exec1, (error, data, getter) => {
+        if(error){
+            console.log("error",error.message);
+            return require('util').inspect(error)
+        }
+        if(getter){
+            console.log("data",data);
+            return require('util').inspect(data);
+        }
+        console.log("data",data);
+        return require('util').inspect(data);
+    });
+}
 const client = new Client({"intents": [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES], partials: ['MESSAGES']});
 client.commands = new Collection();
 const catlol = "cat";
